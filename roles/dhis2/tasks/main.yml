@@ -1,0 +1,20 @@
+---
+- name: Download DHIS2 WAR file
+  get_url:
+    url: "{{ dhis2_war_url }}"
+    dest: /tmp/dhis2.war
+
+- name: Create DHIS2 configuration directory
+  file:
+    path: /opt/dhis2/config
+    state: directory
+    owner: tomcat
+    group: tomcat
+
+- name: Create DHIS2 configuration file
+  template:
+    src: dhis.conf.j2
+    dest: /opt/dhis2/config/dhis.conf
+    owner: tomcat
+    group: tomcat
+    mode: '0644'

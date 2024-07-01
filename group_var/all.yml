@@ -1,0 +1,4 @@
+---
+postgres_version: "16"
+dhis2_version: "40.3.2"
+dhis2_war_url: "https://releases.dhis2.org/40/dhis2-stable-40.3.2.war"

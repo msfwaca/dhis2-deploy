@@ -1,0 +1,26 @@
+---
+- name: Install Tomcat
+  apt:
+    name: tomcat9
+    state: present
+
+- name: Configure DHIS2 environment variables
+  copy:
+    dest: /etc/environment
+    content: |
+      JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+      DHIS2_HOME=/opt/dhis2/config
+  notify: reload environment
+
+- name: Deploy DHIS2 WAR file to Tomcat
+  copy:
+    src: /tmp/dhis2.war
+    dest: /var/lib/tomcat9/webapps/ROOT.war
+    owner: tomcat
+    group: tomcat
+
+- name: Ensure Tomcat service is started and enabled
+  systemd:
+    name: tomcat9
+    state: started
+    enabled: yes

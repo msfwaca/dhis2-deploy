@@ -1,0 +1,2 @@
+[dhis2_servers]
+localhost ansible_connection=local

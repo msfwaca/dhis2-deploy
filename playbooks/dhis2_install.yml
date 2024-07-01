@@ -1,0 +1,10 @@
+---
+- name: Install DHIS2 with PostgreSQL 16
+  hosts: dhis2_servers
+  become: yes
+  roles:
+    - common
+    - java
+    - postgresql
+    - dhis2
+    - tomcat
