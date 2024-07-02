@@ -6,5 +6,5 @@
     - common
     - java
     - postgresql
-    - dhis2
     - tomcat
+    - dhis2
